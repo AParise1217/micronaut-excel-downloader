@@ -1,5 +1,6 @@
 package com.parisesoftware.core.component.book.domain.book;
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
@@ -13,15 +14,30 @@ import java.util.Objects;
  */
 public class Book {
 
+    /**
+     * primary key
+     */
+    private Long id;
+
+    @NotNull
     private String isbn;
 
+    @NotNull
     private String name;
 
     public Book() {}
 
-    public Book(final String isbn, final String name) {
+    public Book(@NotNull final String isbn, @NotNull final String name) {
         this.isbn = isbn;
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -53,4 +69,5 @@ public class Book {
     public int hashCode() {
         return Objects.hash(getIsbn(), getName());
     }
+
 }
